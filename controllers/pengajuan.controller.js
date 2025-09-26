@@ -222,6 +222,54 @@ const pengajuanBuilder = () => {
     }
   };
 
+  const returnReset = async (req, res) => {
+    try {
+      const { id_proposal, id_item } = req.body;
+      const pengajuan = await Pengajuan.findById(id_proposal);
+      if (!pengajuan) {
+        return res.status(404).json({ message: "Pengajuan tidak ditemukan" });
+      }
+
+      const itemIndex = pengajuan.items.findIndex(
+        (item) => item._id.toString() === id_item
+      );
+
+      if (itemIndex === -1) {
+        return res.status(404).json({ message: "Item tidak ditemukan" });
+      }
+
+      if(pengajuan.items[itemIndex].return_data.status !== "rejected"){
+        return res.status(400).json({ message: "Hanya request yang ditolak yang bisa direset" });
+      }
+
+      pengajuan.items[itemIndex].return_data.status = "idle";
+      pengajuan.items[itemIndex].return_data.rejection_reason = "";
+      pengajuan.items[itemIndex].return_data.proposal_data = {
+        name: "",
+        nip: "",
+        jabatan: "",
+        email: "",
+        date: "",
+        ttd: "",
+      }
+
+      pengajuan.items[itemIndex].return_data.approver_data = {
+        no: "",
+        kode_registrasi: "",
+        keadaan_barang: "",
+      }
+
+      pengajuan.markModified("items");
+      await pengajuan.save();
+      return res.status(200).json({
+        message: "Request return berhasil direset",
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ message: err });
+    }
+  };
+
   return {
     propose,
     history,
