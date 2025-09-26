@@ -238,8 +238,10 @@ const pengajuanBuilder = () => {
         return res.status(404).json({ message: "Item tidak ditemukan" });
       }
 
-      if(pengajuan.items[itemIndex].return_data.status !== "rejected"){
-        return res.status(400).json({ message: "Hanya request yang ditolak yang bisa direset" });
+      if (pengajuan.items[itemIndex].return_data.status !== "rejected") {
+        return res
+          .status(400)
+          .json({ message: "Hanya request yang ditolak yang bisa direset" });
       }
 
       pengajuan.items[itemIndex].return_data.status = "idle";
@@ -251,13 +253,13 @@ const pengajuanBuilder = () => {
         email: "",
         date: "",
         ttd: "",
-      }
+      };
 
       pengajuan.items[itemIndex].return_data.approver_data = {
         no: "",
         kode_registrasi: "",
         keadaan_barang: "",
-      }
+      };
 
       pengajuan.markModified("items");
       await pengajuan.save();
