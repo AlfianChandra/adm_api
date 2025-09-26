@@ -176,6 +176,7 @@ const pengajuanBuilder = () => {
     deletePengajuan,
     admGetProposals,
     admApproveProposal,
+    requestReturn,
   };
 };
 
