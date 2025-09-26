@@ -72,6 +72,7 @@ const pengajuanSchema = new mongoose.Schema(
             enum: ["idle", "pending", "approved", "rejected"],
             default: "idle",
           },
+          rejection_reason: { type: String, default: "" },
         },
       },
     ],
