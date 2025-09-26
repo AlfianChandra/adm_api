@@ -14,4 +14,5 @@ router.post("/request-return", pengajuan.requestReturn);
 router.post("/adm/approve", adminOnly, pengajuan.admApproveProposal);
 router.post("/adm/get-proposal", adminOnly, pengajuan.admGetProposals);
 router.post("/adm/return/approve", pengajuan.admApproveReturn);
+router.post("/adm/return/reject", pengajuan.admRejectReturn);
 export default router;
