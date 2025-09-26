@@ -194,7 +194,7 @@ const pengajuanBuilder = () => {
 
   const admRejectReturn = async (req, res) => {
     try {
-      const { id_proposal, id_item } = req.body;
+      const { id_proposal, id_item, rejection_reason } = req.body;
       const pengajuan = await Pengajuan.findById(id_proposal);
       if (!pengajuan) {
         return res.status(404).json({ message: "Pengajuan tidak ditemukan" });
@@ -209,6 +209,8 @@ const pengajuanBuilder = () => {
       }
 
       pengajuan.items[itemIndex].return_data.status = "rejected";
+      pengajuan.items[itemIndex].return_data.rejection_reason =
+        rejection_reason;
       pengajuan.markModified("items");
       await pengajuan.save();
       return res.status(200).json({
