@@ -60,9 +60,7 @@ const pengajuanSchema = new mongoose.Schema(
             jabatan: { type: String, default: "" },
             email: { type: String, default: "" },
             date: { type: String, default: "" },
-            day: { type: String },
-            month: { type: String },
-            year: { type: String },
+            ttd: { type: String, default: "" },
           },
           approver_data: {
             no: { type: String, default: "" },
