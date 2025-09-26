@@ -153,9 +153,7 @@ const pengajuanBuilder = () => {
         return res.status(404).json({ message: "Item tidak ditemukan" });
       }
 
-      pengajuan.items[itemIndex].return_data = {
-        ...return_data,
-      };
+      pengajuan.items[itemIndex].return_data = return_data;
       pengajuan.items[itemIndex].status = "pending";
       pengajuan.markModified("items");
       await pengajuan.save();
