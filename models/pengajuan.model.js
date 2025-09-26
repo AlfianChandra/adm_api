@@ -53,6 +53,24 @@ const pengajuanSchema = new mongoose.Schema(
           type: Number,
           default: 1,
         },
+        return_data: {
+          no: {
+            type: String,
+            default: "",
+          },
+          kode_registrasi: {
+            type: String,
+            default: "",
+          },
+          date: {
+            type: String,
+            default: "",
+          },
+          condisi: {
+            type: String,
+            default: "",
+          }
+        }
       },
     ],
     keadaan_barang: {
