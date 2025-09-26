@@ -281,6 +281,7 @@ const pengajuanBuilder = () => {
     requestReturn,
     admApproveReturn,
     admRejectReturn,
+    returnReset,
   };
 };
 
