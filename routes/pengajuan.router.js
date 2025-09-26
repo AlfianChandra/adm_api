@@ -9,7 +9,7 @@ router.post("/update-status", pengajuan.updateStatus);
 router.post("/update-ttd", pengajuan.updateTTD);
 router.post("/delete", pengajuan.deletePengajuan);
 
-router.post("request-return", pengajuan.requestReturn)
+router.post("/request-return", pengajuan.requestReturn);
 
 router.post("/adm/approve", adminOnly, pengajuan.admApproveProposal);
 router.post("/adm/get-proposal", adminOnly, pengajuan.admGetProposals);
