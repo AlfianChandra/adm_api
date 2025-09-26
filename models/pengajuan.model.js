@@ -59,7 +59,12 @@ const pengajuanSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+
     kode_registrasi: {
+      type: String,
+      default: "",
+    },
+    rejection_reason: {
       type: String,
       default: "",
     },
