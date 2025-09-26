@@ -4,6 +4,7 @@ const pengajuanBuilder = () => {
     try {
       let data = req.body;
       data["id_user"] = req.user.id;
+      data["status"] = "pending";
       const newPengajuan = new Pengajuan(data);
       await newPengajuan.save();
       return res.status(201).json({

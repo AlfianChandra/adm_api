@@ -28,7 +28,6 @@ const pengajuanSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["pending", "approved", "rejected", "draft"],
-      
     },
     items: [
       {
