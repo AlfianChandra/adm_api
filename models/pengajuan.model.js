@@ -29,11 +29,32 @@ const pengajuanSchema = new mongoose.Schema(
       type: String,
       enum: ["pending", "approved", "rejected", "draft"],
     },
-    items: {
-      type: Array,
-      required: true,
-      default: [],
-    },
+    items: [
+      {
+        inv: {
+          nama: {
+            type: String,
+            default: "",
+          },
+          kode_aset: {
+            type: String,
+            default: "",
+          },
+          jenis: {
+            type: String,
+            default: "",
+          },
+          sub_jenis: {
+            type: String,
+            default: "",
+          },
+        },
+        qty: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
     keadaan_barang: {
       type: String,
       default: "",
