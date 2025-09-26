@@ -155,8 +155,8 @@ const pengajuanBuilder = () => {
 
       pengajuan.items[itemIndex].return_data = {
         ...return_data,
-        status: "pending",
       };
+      pengajuan.items[itemIndex].status = "pending";
       pengajuan.markModified("items");
       await pengajuan.save();
       return res.status(200).json({
