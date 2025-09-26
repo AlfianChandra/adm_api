@@ -27,8 +27,7 @@ const pengajuanSchema = new mongoose.Schema(
     ttd: { type: String, trim: true },
     status: {
       type: String,
-      enum: ["pending", "approved", "rejected", "draft", "returned"], //Returned == dikembalikan
-      default: "pending",
+      enum: ["pending", "approved", "rejected", "draft", "returned"],
     },
     items: {
       type: Array,
