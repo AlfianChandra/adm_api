@@ -54,23 +54,23 @@ const pengajuanSchema = new mongoose.Schema(
           default: 1,
         },
         return_data: {
-          no: {
-            type: String,
-            default: "",
+          proposal_data: {
+            name: { type: String, default: "" },
+            nip: { type: String, default: "" },
+            jabatan: { type: String, default: "" },
+            email: { type: String, default: "" },
+            date: { type: String, default: "" },
+            day: { type: String },
+            month: { type: String },
+            year: { type: String },
           },
-          kode_registrasi: {
-            type: String,
-            default: "",
+          approver_data: {
+            no: { type: String, default: "" },
+            kode_registrasi: { type: String, default: "" },
+            keadaan_barang: { type: String, default: "" },
           },
-          date: {
-            type: String,
-            default: "",
-          },
-          condisi: {
-            type: String,
-            default: "",
-          }
-        }
+          status: { type: String, enum: ["pending", "approved", "rejected"] },
+        },
       },
     ],
     keadaan_barang: {
