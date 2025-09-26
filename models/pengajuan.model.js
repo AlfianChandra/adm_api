@@ -28,6 +28,7 @@ const pengajuanSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["pending", "approved", "rejected", "draft"],
+      
     },
     items: [
       {
@@ -69,7 +70,11 @@ const pengajuanSchema = new mongoose.Schema(
             kode_registrasi: { type: String, default: "" },
             keadaan_barang: { type: String, default: "" },
           },
-          status: { type: String, enum: ["pending", "approved", "rejected"] },
+          status: {
+            type: String,
+            enum: ["idle", "pending", "approved", "rejected"],
+            default: "idle",
+          },
         },
       },
     ],
