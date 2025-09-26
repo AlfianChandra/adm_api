@@ -5,7 +5,7 @@ dotenv.config({
 import app from "./app.js";
 import http from "http";
 const appName = process.env.APP_NAME || "Express App";
-const PORT = process.env.SERVER_PORT || 3000;
+const PORT = process.env.SERVER_PORT || 6625;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
