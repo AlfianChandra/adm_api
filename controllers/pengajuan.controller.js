@@ -138,6 +138,36 @@ const pengajuanBuilder = () => {
     }
   };
 
+  const requestReturn = async (req, res) => {
+    try {
+      const { id_proposal, id_item, ...return_data } = req.body;
+      const pengajuan = await Pengajuan.findById(id_proposal);
+      if (!pengajuan) {
+        return res.status(404).json({ message: "Pengajuan tidak ditemukan" });
+      }
+
+      const itemIndex = pengajuan.items.findIndex(
+        (item) => item._id.toString() === id_item
+      );
+      if (itemIndex === -1) {
+        return res.status(404).json({ message: "Item tidak ditemukan" });
+      }
+
+      pengajuan.items[itemIndex].return_data = {
+        ...return_data,
+        status: "pending",
+      };
+      pengajuan.markModified("items");
+      await pengajuan.save();
+      return res.status(200).json({
+        message: "Request return berhasil dibuat",
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ message: err });
+    }
+  };
+
   return {
     propose,
     history,
