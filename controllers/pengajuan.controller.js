@@ -230,6 +230,7 @@ const pengajuanBuilder = () => {
     admApproveProposal,
     requestReturn,
     admApproveReturn,
+    admRejectReturn,
   };
 };
 
