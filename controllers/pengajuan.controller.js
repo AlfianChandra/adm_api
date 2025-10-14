@@ -272,6 +272,25 @@ const pengajuanBuilder = () => {
     }
   };
 
+  const admRejectProposal = async (req, res) => {
+    try {
+      const { id_proposal } = req.body;
+      const pengajuan = await Pengajuan.findById(id_proposal);
+      if (!pengajuan) {
+        return res.status(404).json({ message: "Pengajuan tidak ditemukan" });
+      }
+      pengajuan.status = "rejected";
+      await pengajuan.save();
+      return res.status(200).json({
+        message: "Pengajuan berhasil ditolak",
+        payload: pengajuan,
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ message: err });
+    }
+  };
+
   return {
     propose,
     history,
@@ -284,6 +303,7 @@ const pengajuanBuilder = () => {
     admApproveReturn,
     admRejectReturn,
     returnReset,
+    admRejectProposal,
   };
 };
 
